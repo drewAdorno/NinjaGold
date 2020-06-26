@@ -12,44 +12,49 @@
 </head>
 
 <body class="container p-5">
-    <div class="row">
-        <p class="text-warning">Your Gold: <span class='gold'>{{request.session.gold}}</span></p>
-    </div>
-    <div class="row mt-3">
-        <div class="col">
-            <div class="place">
-                <a href="/process_money/farm" role="button"><img src="{% static 'img/farm.png' %}" /></a>
-                <p>(earns 10-20 gold)</p>
-            </div>
+    {% if request.session.gold < 0 %}
+        <h1>You lose!</h1>
+        <a class="btn btn-primary" href="/newgame" role="button">Play again?</a>
+    {% else %}
+        <div class="row">
+            <p class="text-warning">Your Gold: <span class='gold'>{{request.session.gold}}</span></p>
         </div>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="place">
+                    <a href="/process_money/farm" role="button"><img src="{% static 'img/farm.png' %}" /></a>
+                    <p>(earns 10-20 gold)</p>
+                </div>
+            </div>
 
-        <div class="col">
-            <div class="place">
-                <a href="/process_money/cave" role="button"><img src="{% static 'img/cave.png' %}" /></a>
-                <p>(earns 5-10 gold)</p>
+            <div class="col">
+                <div class="place">
+                    <a href="/process_money/cave" role="button"><img src="{% static 'img/cave.png' %}" /></a>
+                    <p>(earns 5-10 gold)</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="place">
+                    <a href="/process_money/house" role="button"><img src="{% static 'img/house.png' %}" /></a>
+                    <p>(earns 2-5 gold)</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="place">
+                    <a href="/process_money/casino" role="button"><img src="{% static 'img/casino.png' %}" /></a>
+                    <p>(earns/loses 0-50 gold)</p>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="place">
-                <a href="/process_money/house" role="button"><img src="{% static 'img/house.png' %}" /></a>
-                <p>(earns 2-5 gold)</p>
+        <div class="row">
+            <p>Activities:</p>
+            <div class="activities">
+                {% for activity in request.session.activities reversed %}
+                <p class="{{activity.1}}">{{activity.0}}</p>
+                {% endfor %}
             </div>
         </div>
-        <div class="col">
-            <div class="place">
-                <a href="/process_money/casino" role="button"><img src="{% static 'img/casino.jpg' %}" /></a>
-                <p>(earns/loses 0-50 gold)</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <p>Activities:</p>
-        <div class="activities">
-            {% for activity in request.session.activities reversed %}
-            <p class="{{activity.1}}">{{activity.0}}</p>
-            {% endfor %}
-        </div>
-    </div>
+    {% endif %}    
 </body>
 
 </html>
