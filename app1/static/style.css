@@ -16,9 +16,9 @@
 }
 .gold
 {
-    border:2px solid black;
+    border:2px solid rgb(255,193,7);
     padding: 0px 40px 0px 2px;
-    color: rgb(168, 144, 4)
+    color: rgb(255,193,7)
 }
 .place
 {
