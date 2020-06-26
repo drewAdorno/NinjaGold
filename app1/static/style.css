@@ -1,0 +1,30 @@
+.activities
+{
+    border: 2px black solid;
+    min-height: 100px;
+    height:500px;
+    min-width: 100%;
+    overflow: scroll;
+}
+.red
+{
+    color:red
+}
+.green
+{
+    color:green
+}
+.gold
+{
+    border:2px solid black;
+    padding: 0px 40px 0px 2px;
+    color: rgb(168, 144, 4)
+}
+.place
+{
+    text-align: center;
+}
+img
+{
+    height: 100px;
+}
